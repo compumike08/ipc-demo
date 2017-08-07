@@ -7,25 +7,32 @@ const BrowserWindow = electron.BrowserWindow;
 
 const ipc = electron.ipcMain;
 
-let mainWindow;
+let windows = [];
 
 app.on('ready', _ => {
-  mainWindow = new BrowserWindow({
-    height: 400,
-    width: 400
+  [1, 2, 3].forEach(num => {
+    let win = new BrowserWindow({
+      height: 400,
+      width: 400
+    });
+
+    win.loadURL(`file://${__dirname}/countdown.html`);
+
+    win.on('closed', _ => {
+      let idx = windows.indexOf(win);
+      windows.splice(idx, 1);
+      console.log('closed a window!');
+    });
+
+    windows.push(win);
   });
-
-  mainWindow.loadURL(`file://${__dirname}/countdown.html`);
-
-  mainWindow.on('closed', _ => {
-    console.log('closed!');
-    mainWindow = null;
-  })
 });
 
 ipc.on('countdown-start', _ => {
   countdown(count => {
     console.log('count', count);
-    mainWindow.webContents.send('countdown', count);
+    windows.forEach(win => {
+      win.webContents.send('countdown', count);
+    });
   })
 });
