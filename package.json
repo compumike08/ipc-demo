@@ -16,5 +16,8 @@
     "url": "https://github.com/compumike08/ipc-demo/issues"
   },
   "homepage": "https://github.com/compumike08/ipc-demo#readme",
-  "private": "true"
+  "private": "true",
+  "devDependencies": {
+    "electron": "^1.6.11"
+  }
 }
