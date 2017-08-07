@@ -1,0 +1,20 @@
+{
+  "name": "ipc-demo",
+  "version": "1.0.0",
+  "description": "Pluralsight Electron Fundamentals Tutorial Demo App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/compumike08/ipc-demo.git"
+  },
+  "keywords": [],
+  "author": "compumike08",
+  "bugs": {
+    "url": "https://github.com/compumike08/ipc-demo/issues"
+  },
+  "homepage": "https://github.com/compumike08/ipc-demo#readme",
+  "private": "true"
+}
