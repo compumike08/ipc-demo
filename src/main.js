@@ -2,11 +2,7 @@ const electron = require('electron');
 
 const countdown = require('./countdown');
 
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
-const Menu = electron.Menu;
-
-const ipc = electron.ipcMain;
+const {app, BrowserWindow, Menu, ipcMain} = electron;
 
 let windows = [];
 
@@ -49,7 +45,7 @@ app.on('ready', _ => {
   Menu.setApplicationMenu(menu);
 });
 
-ipc.on('countdown-start', _ => {
+ipcMain.on('countdown-start', _ => {
   countdown(count => {
     console.log('count', count);
     windows.forEach(win => {

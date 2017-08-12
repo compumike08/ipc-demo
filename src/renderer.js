@@ -1,11 +1,11 @@
 const electron = require('electron');
 
-const ipc = electron.ipcRenderer;
+const {ipcRenderer} = electron;
 
 document.getElementById('start').addEventListener('click', _ => {
-    ipc.send('countdown-start');
+    ipcRenderer.send('countdown-start');
 });
 
-ipc.on('countdown', (evt, count) => {
+ipcRenderer.on('countdown', (evt, count) => {
     document.getElementById('count').innerHTML = count;
 });
