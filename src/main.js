@@ -4,6 +4,7 @@ const countdown = require('./countdown');
 
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
+const Menu = electron.Menu;
 
 const ipc = electron.ipcMain;
 
@@ -26,6 +27,26 @@ app.on('ready', _ => {
 
     windows.push(win);
   });
+
+  const appName = electron.app.getName();
+  const template = [
+    {
+      label: appName,
+      submenu: [{
+        label: `About ${appName}`
+      }, {
+        type: 'separator'
+      }, {
+        label: 'Quit',
+        click: _ => {
+          app.quit();
+        }
+      }]
+    }
+  ];
+
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
 });
 
 ipc.on('countdown-start', _ => {
