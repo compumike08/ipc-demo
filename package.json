@@ -1,5 +1,6 @@
 {
   "name": "ipc-demo",
+  "productName": "IPC Demo",
   "version": "1.0.0",
   "description": "Pluralsight Electron Fundamentals Tutorial Demo App",
   "main": "src/main.js",
